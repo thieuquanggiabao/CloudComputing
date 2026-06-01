@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getBookingById } from "../services/api";
+import { recordBookingToZoho } from "../services/zohoCinema";
 
 function BookingSuccess() {
   const { bookingId } = useParams();
@@ -8,6 +9,7 @@ function BookingSuccess() {
   const [booking, setBooking] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [revenueRecorded, setRevenueRecorded] = useState(false);
 
   useEffect(() => {
     const fetchBooking = async () => {
@@ -22,6 +24,33 @@ function BookingSuccess() {
     };
     fetchBooking();
   }, [bookingId]);
+
+  // 🚀 Zoho Integration: Ghi nhập doanh thu khi booking success
+  useEffect(() => {
+    if (booking && !revenueRecorded) {
+      const recordRevenue = async () => {
+        try {
+          const bookingData = {
+            bookingId: booking.bookingId,
+            customerName: booking.customerName,
+            customerEmail: booking.customerPhone,
+            movieTitle: booking.movieTitle,
+            seatCount: booking.seats.length,
+            totalAmount: booking.totalPrice,
+          };
+
+          await recordBookingToZoho(bookingData);
+          console.log("✅ Ghi nhập doanh thu thành công");
+          setRevenueRecorded(true);
+        } catch (error) {
+          console.error("⚠️ Không ghi được Zoho (không ảnh hưởng):", error);
+          setRevenueRecorded(true);
+        }
+      };
+
+      recordRevenue();
+    }
+  }, [booking, revenueRecorded]);
 
   if (loading) {
     return (
