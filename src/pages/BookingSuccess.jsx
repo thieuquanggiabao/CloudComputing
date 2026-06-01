@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getBookingById } from "../services/api";
 import { recordBookingToZoho } from "../services/zohoCinema";
+import BookingComplaint from "../components/BookingComplaint";
 
 function BookingSuccess() {
   const { bookingId } = useParams();
@@ -10,6 +11,7 @@ function BookingSuccess() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [revenueRecorded, setRevenueRecorded] = useState(false);
+  const [isComplaintOpen, setIsComplaintOpen] = useState(false);
 
   useEffect(() => {
     const fetchBooking = async () => {
@@ -33,7 +35,7 @@ function BookingSuccess() {
           const bookingData = {
             bookingId: booking.bookingId,
             customerName: booking.customerName,
-            customerEmail: booking.customerPhone,
+            customerEmail: booking.customerEmail || `khachhang_${booking.customerPhone}@minicinema.com`,
             movieTitle: booking.movieTitle,
             seatCount: booking.seats.length,
             totalAmount: booking.totalPrice,
@@ -154,9 +156,24 @@ function BookingSuccess() {
                 💬 Gửi đánh giá
               </Link>
             </div>
+            
+            <div style={{ textAlign: "center", marginTop: 16 }}>
+              <button 
+                onClick={() => setIsComplaintOpen(true)}
+                style={{ background: 'none', border: 'none', color: 'var(--text-muted)', textDecoration: 'underline', cursor: 'pointer', fontSize: 13 }}
+              >
+                Gặp vấn đề về vé? Gửi hỗ trợ (Zoho Desk)
+              </button>
+            </div>
           </div>
         </div>
       </div>
+
+      <BookingComplaint 
+        isOpen={isComplaintOpen} 
+        onClose={() => setIsComplaintOpen(false)} 
+        booking={booking} 
+      />
     </main>
   );
 }

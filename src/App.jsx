@@ -8,6 +8,8 @@ import BookingSuccess from "./pages/BookingSuccess";
 import Login from "./pages/Login";
 import AdminMovies from "./pages/AdminMovies";
 import AdminShowtimes from "./pages/AdminShowtimes";
+import RevenueReport from "./pages/RevenueReport";
+import AdminAnalytics from "./pages/AdminAnalytics";
 import Feedback from "./pages/Feedback";
 import Subscribe from "./pages/Subscribe";
 
@@ -28,6 +30,8 @@ function App() {
             <Route path="/subscribe" element={<Subscribe />} />
             <Route path="/admin/movies" element={<AdminMovies />} />
             <Route path="/admin/showtimes" element={<AdminShowtimes />} />
+            <Route path="/admin/revenue" element={<RevenueReport />} />
+            <Route path="/admin/analytics" element={<AdminAnalytics />} />
           </Routes>
         </main>
       </div>

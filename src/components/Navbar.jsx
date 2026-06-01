@@ -11,6 +11,8 @@ const NAV_ITEMS = [
 const ADMIN_NAV_ITEMS = [
   { to: "/admin/movies", icon: "🎞️", label: "Quản lý phim" },
   { to: "/admin/showtimes", icon: "📅", label: "Quản lý suất chiếu" },
+  { to: "/admin/revenue", icon: "💰", label: "Doanh thu Zoho" },
+  { to: "/admin/analytics", icon: "📈", label: "Phân tích Data (AI)" },
 ];
 
 function Sidebar() {

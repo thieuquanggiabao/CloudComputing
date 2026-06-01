@@ -41,12 +41,15 @@ async function main() {
     try {
         const response = await axios.post(
             "https://accounts.zoho.com/oauth/v2/token",
+            null,
             {
-                client_id: clientId,
-                client_secret: clientSecret,
-                code: authCode,
-                grant_type: "authorization_code",
-                redirect_uri: "http://localhost:5000/callback",
+                params: {
+                    client_id: clientId.trim(),
+                    client_secret: clientSecret.trim(),
+                    code: authCode.trim(),
+                    grant_type: "authorization_code",
+                    redirect_uri: "http://localhost:5000/callback",
+                }
             }
         );
 

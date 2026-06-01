@@ -59,6 +59,12 @@ export const createBooking = async (bookingData) => {
   const data = await res.json();
 
   if (!res.ok) {
+    if (res.status === 401 || res.status === 403) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "/login";
+      throw new Error("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.");
+    }
     throw new Error(data.message || "Lỗi đặt vé");
   }
 
