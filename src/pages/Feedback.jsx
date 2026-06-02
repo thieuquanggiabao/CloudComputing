@@ -39,7 +39,7 @@ function Feedback() {
         <div className="content-card-body">
           <iframe
             title="Mini Cinema Feedback"
-            src="https://forms.zohopublic.com/giabao2005vngm1/form/ContactUs/formperma/y4PuILgYGo_WVqasYWWY1uSzVRQK1fXmvTqpH6xs2MY"
+            src="https://forms.zohopublic.com/ngocanh200505gm1/form/MiniCinemaFeedback/formperma/ONzhP0YPpPXun8pXFsw1hw8AHRpNFZxAALIe0R8lrP4"
             width="100%"
             height="750"
             style={{
