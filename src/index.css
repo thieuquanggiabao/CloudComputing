@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
-
 /* =============================================
    CSS VARIABLES — DESIGN TOKENS
    ============================================= */
@@ -87,7 +85,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Inter', 'Outfit', -apple-system, sans-serif;
   background: var(--bg-base);
   color: var(--text-primary);
   line-height: 1.6;
@@ -97,7 +95,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Inter', sans-serif;
   line-height: 1.2;
   font-weight: 700;
 }
@@ -202,7 +200,7 @@ input, textarea, select {
 }
 
 .sidebar-logo-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Inter', sans-serif;
   font-size: 18px;
   font-weight: 800;
   color: var(--text-primary);
@@ -533,7 +531,7 @@ input, textarea, select {
 }
 
 .hero-content h1 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Inter', sans-serif;
   font-size: 56px;
   font-weight: 900;
   color: white;
@@ -580,7 +578,7 @@ input, textarea, select {
 }
 
 .hero-stat-num {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Inter', sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: white;
